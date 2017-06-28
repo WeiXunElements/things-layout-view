@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+
 <link rel="import" href="../paper-card/paper-card.html">
 
 <link rel="import" href="./things-layout-behavior.html">
@@ -29,7 +30,7 @@
 
 			#topRight {
 				@apply(--layout-flex);
-				@apply(--layout-vertical);				
+				@apply(--layout-vertical);
 			}
 
 			#bottom {
@@ -44,14 +45,14 @@
 
 			#bottomRight {
 				@apply(--layout-flex);
-				@apply(--layout-vertical);				
+				@apply(--layout-vertical);
 			}
 
 			.layout-content {
 				@apply(--layout-vertical);
 				@apply(--layout-flex);
 				overflow: auto;
-			}	
+			}
 
 			.subtitle:before {
 				content: '';
@@ -114,7 +115,7 @@
 			is: 'things-layout-demeter',
 
 			properties: {
-				
+
 				topLeftTitle: {
 					type: String,
 					value: 'top-left'

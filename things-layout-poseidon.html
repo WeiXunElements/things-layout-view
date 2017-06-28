@@ -1,10 +1,13 @@
 <link rel="import" href="../polymer/polymer.html">
+
 <link rel="import" href="../paper-card/paper-card.html">
 <link rel="import" href="../paper-tabs/paper-tabs.html">
 <link rel="import" href="../iron-pages/iron-pages.html">
 <link rel="import" href="../iron-resizable/iron-resizable-behavior.html">
 <link rel="import" href="../iron-selector/iron-selectable.html">
+
 <link rel="import" href="../things-detail/things-detail-tab-view-behavior.html">
+
 <link rel="import" href="./things-layout-behavior.html">
 
 <!--
@@ -23,7 +26,7 @@
 			paper-card {
 			    background-color:transparent;
 			}
-			
+
 			iron-pages {
 				@apply(--layout-vertical);
 				@apply(--layout-flex);
@@ -38,7 +41,7 @@
 				@apply(--layout-vertical);
 				@apply(--layout-flex);
 				overflow: auto;
-			}	
+			}
 
 			.subtitle:before {
 				content: '';
@@ -49,12 +52,12 @@
 				@apply(--things-default-padding);
 				@apply(--things-subtitle);
 				padding-left: 16px
-			}			
-			
+			}
+
 		</style>
 
 		<paper-card id="top" elevation="1">
-			
+
 			<div id="topLeft" class="layout-content">
 				<span class="subtitle">[[topLeftContentTitle]]</span>
 				<content select="[top-left]"></content>
@@ -107,7 +110,7 @@
 			is: 'things-layout-poseidon',
 
 			properties: {
-				
+
 				/**
 				 * Top content title
 				 */
@@ -128,17 +131,17 @@
 						attributes: [
 							{ name: 'resource-id', value: '1' },
 							{ name : 'class', value : 'layout flex' }
-						] 
+						]
 					}, {
 						title: 'form2',
 						tabId: 'tabId2',
-						isTab: true, 
+						isTab: true,
 						elementId: 'elementId2',
 						elementName: 'things-resource-form',
 						attributes: [
 							{ name:'resource-id', value : '2' },
 							{ name : 'class', value : 'layout flex' }
-						] 
+						]
 					},{
 						title: 'form3',
 						tabId: 'tabId3',

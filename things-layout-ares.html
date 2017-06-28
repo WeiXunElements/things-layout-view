@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+
 <link rel="import" href="../paper-card/paper-card.html">
 
 <link rel="import" href="./things-layout-behavior.html">
@@ -84,7 +85,7 @@
 			<span class="subtitle" hidden="[[hideBottomSubtitle]]">[[bottomContentTitle]]</span>
 			<paper-icon-button icon="[[arrowIcon]]" on-tap="foldBtnTap"></paper-icon-button>
 		</div>
-				
+
   	<iron-collapse id="bottom-content" class="layout-content" opened>
 			<content select="[bottom]"></content>
 		</iron-collapse>

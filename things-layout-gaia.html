@@ -1,10 +1,11 @@
 <link rel="import" href="../polymer/polymer.html">
+
 <link rel="import" href="../paper-card/paper-card.html">
 
 <link rel="import" href="./things-layout-behavior.html">
 
 <!--
-	
+	하나의 레이아웃
 -->
 
 <dom-module id="things-layout-gaia">
@@ -21,7 +22,7 @@
 				@apply(--layout-vertical);
 				@apply(--layout-flex);
 				overflow: auto;
-			}	
+			}
 
 			.subtitle:before {
 				content: '';
@@ -46,7 +47,7 @@
 			is: 'things-layout-gaia',
 
 			properties: {
-				
+
 				contentTitle: {
 					type: String,
 					value: 'content'
@@ -61,20 +62,12 @@
 				'sections-configured' : 'setupLayoutClass'
 			},
 
-			/**
+		/**
 			* Section이 모두 추가된 후 Layout Class를 설정한다.
-			*
+			******
 			* @param {Object} e sections-configured
 			*/
 			setupLayoutClass: function(e) {
-				// TODO
-				// if(!this.sections || this.sections.length == 0) return;
-
-				// if(this.sections['topContent'])
-				// 	this.sections['topContent'].setAttribute('class', 'flex');
-
-				// if(this.sections['bottomContent'])
-				// 	this.sections['bottomContent'].setAttribute('class', 'flex');
 			}
 		});
 	</script>

@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+
 <link rel="import" href="../paper-card/paper-card.html">
 
 <link rel="import" href="./things-layout-behavior.html">
@@ -24,8 +25,19 @@
         @apply(--layout-vertical);
         margin-right:15px;
       }
+
       .ratio2 {
         @apply(--layout-flex-2);
+        @apply(--layout-vertical);
+      }
+
+      .ratio3 {
+        @apply(--layout-flex-3);
+        @apply(--layout-vertical);
+      }
+
+      .ratio4 {
+        @apply(--layout-flex-4);
         @apply(--layout-vertical);
       }
 
@@ -33,7 +45,7 @@
         @apply(--layout-vertical);
         @apply(--layout-flex);
         overflow: auto;
-      } 
+      }
 
       .subtitle:before {
         content: '';
