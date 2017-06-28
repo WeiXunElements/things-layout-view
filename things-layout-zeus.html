@@ -1,0 +1,141 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-card/paper-card.html">
+
+<link rel="import" href="./things-layout-behavior.html">
+
+<!--
+	상하 1:1 분할 레이아웃
+-->
+
+<dom-module id="things-layout-zeus">
+	<template>
+		<style>
+			:host {
+				display: inline-block;
+				@apply(--layout-vertical);
+			}
+			paper-card {
+			    background-color:transparent;
+			}
+			#top {
+				@apply(--layout-flex);
+				@apply(--layout-vertical);
+			}
+
+			#topContent {
+				@apply(--layout-vertical);
+				@apply(--layout-flex);
+				overflow: auto;
+			}
+
+			#bottom {
+				@apply(--layout-flex);
+				@apply(--layout-vertical);
+			}
+
+			#bottomContent {
+				@apply(--layout-flex);
+				@apply(--layout-vertical);
+				overflow: auto;
+			}
+
+			.subtitle:before {
+				content: '';
+				@apply(--things-subtitle-icon);
+			}
+
+			.subtitle {
+				@apply(--things-default-padding);
+				@apply(--things-subtitle);
+				padding-left: 16px
+			}
+		</style>
+
+    <!-- top -->
+    <paper-card id="top" elevation="[[elevation]]">
+			<span class="subtitle" hidden="[[hideTopSubtitle]]">[[topContentTitle]]</span>
+	    <div id="topContent" class="layout-content">
+	    	<content select="[top]"></content>
+	    </div>
+    </paper-card>
+
+    <!-- bottom -->
+    <paper-card id="bottom" elevation="[[elevation]]">
+	    <span class="subtitle" hidden="[[hideBottomSubtitle]]">[[bottomContentTitle]]</span>
+	    <div id="bottomContent" class="layout-content">
+	    	<content select="[bottom]"></content>
+	    </div>
+    </paper-card>
+	</template>
+
+	<script>
+		Polymer({
+			is: 'things-layout-zeus',
+
+			properties: {
+				/**
+				 * Title Of Top Content
+				 */
+				topContentTitle: {
+					type: String,
+					value: 'topContent'
+				},
+
+				/**
+				 * Title Of Bottom Content
+				 */
+				bottomContentTitle: {
+					type: String,
+					value: 'bottomContent'
+				},
+
+				/**
+				 * if hide top subtitle
+				 */
+				hideTopSubtitle: {
+					type: Boolean,
+					value: false
+				},
+
+				/**
+				 * if hide bottom subtitle
+				 */
+				hideBottomSubtitle: {
+					type: Boolean,
+					value: false
+				},
+
+				/**
+				 * paper card elevation value
+				 */
+				elevation: {
+					type: Number,
+					value: 0
+				}
+			},
+
+			behaviors: [
+				Things.LayoutBehavior
+			],
+
+			listeners: {
+				'sections-configured' : 'setupLayoutClass'
+			},
+
+			/**
+			* Section이 모두 추가된 후 Layout Class를 설정한다.
+			*
+			* @param {Object} e sections-configured
+			*/
+			setupLayoutClass: function(e) {
+				if(!this.sections || this.sections.length == 0) return;
+
+				if(this.sections['topContent'])
+					this.sections['topContent'].setAttribute('class', 'flex');
+
+				if(this.sections['bottomContent'])
+					this.sections['bottomContent'].setAttribute('class', 'flex');
+			}
+		});
+	</script>
+</dom-module>

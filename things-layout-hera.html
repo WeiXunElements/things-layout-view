@@ -1,0 +1,152 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-card/paper-card.html">
+
+<link rel="import" href="./things-layout-behavior.html">
+
+<!--
+  상하 1:1 분할 하단 3분할 레이아웃
+-->
+
+<dom-module id="things-layout-hera">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        @apply(--layout-horizontal);
+      }
+
+      paper-card {
+          background-color:transparent;
+      }
+
+      .ratio1 {
+        @apply(--layout-flex);
+        @apply(--layout-vertical);
+        margin-right:15px;
+      }
+      .ratio2 {
+        @apply(--layout-flex-2);
+        @apply(--layout-vertical);
+      }
+
+      .layout-content {
+        @apply(--layout-vertical);
+        @apply(--layout-flex);
+        overflow: auto;
+      } 
+
+      .subtitle:before {
+        content: '';
+        @apply(--things-subtitle-icon);
+      }
+
+      .subtitle {
+        @apply(--things-default-padding);
+        @apply(--things-subtitle);
+        padding-left: 16px
+      }
+    </style>
+
+    <!-- Left -->
+    <paper-card id="left" class$="[[leftRatio]]" elevation="[[elevation]]">
+      <span class="subtitle" hidden="[[hideLeftSubtitle]]">[[leftContentTitle]]</span>
+      <div id="leftContent" class="layout-content">
+        <content select="[left]"></content>
+      </div>
+    </paper-card>
+
+    <!-- Right -->
+    <paper-card id="right" class$="[[rightRatio]]" elevation="[[elevation]]">
+      <span class="subtitle" hidden="[[hideRightSubtitle]]">[[rightContentTitle]]</span>
+      <div id="rightContent" class="layout-content">
+         <content select="[right]"></content>
+      </div>
+    </paper-card>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'things-layout-hera',
+
+      behaviors: [
+        Things.LayoutBehavior
+      ],
+
+      properties: {
+
+        /**
+         * 레이아웃 좌우 비율을 줄지 여부
+         */
+        ratio: {
+          type: Boolean,
+          value: false,
+          observer: '_ratioChanged'
+        },
+
+        leftRatio: {
+          type: String,
+          value: 'ratio1'
+        },
+
+        rightRatio: {
+          type: String,
+          value: 'ratio1'
+        },
+
+        /**
+         * 좌측 컨텐트 타이틀 히든 여부
+         */
+        hideLeftSubtitle: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * 우측 컨텐트 타이틀 히든 여부
+         */
+        hideRightSubtitle: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * Title Of Left Content
+         */
+        leftContentTitle: {
+          type: String,
+          value: 'leftContent'
+        },
+
+        /**
+         * Title Of Right Content
+         */
+        rightContentTitle: {
+          type: String,
+          value: 'rightContent'
+        },
+
+        /**
+         * paper-card elevation value
+         */
+        elevation: {
+          type: Number,
+          value: 0
+        }
+      },
+
+      /**
+       * ratio가 true이면
+       * 레이아웃에 비율을 적용함
+       */
+      _ratioChanged: function(ratio) {
+        if(ratio) {
+          this.leftRatio = 'ratio2';
+          this.rightRatio = 'ratio1';
+        } else {
+          this.leftRatio = 'ratio1';
+          this.rightRatio = 'ratio1';
+        }
+      }
+    });
+  </script>
+</dom-module>

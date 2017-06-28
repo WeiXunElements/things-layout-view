@@ -1,0 +1,157 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-card/paper-card.html">
+
+<link rel="import" href="./things-layout-behavior.html">
+
+<!--
+	상하 1:1분할 상단 좌우 분할 레이아웃
+-->
+
+<dom-module id="things-layout-dionysos">
+	<template>
+		<style>
+			:host {
+				display: inline-block;
+				@apply(--layout-vertical);
+			}
+			paper-card {
+			    background-color:transparent;
+			}
+			#top {
+				@apply(--layout-flex);
+				@apply(--layout-horizontal);
+			}
+
+			#top-left {
+				@apply(--layout-flex-2);
+				@apply(--layout-vertical);
+			}
+
+			#top-right {
+				@apply(--layout-flex-3);
+				@apply(--layout-vertical);
+			}
+
+			#bottom {
+				@apply(--layout-flex);
+				@apply(--layout-vertical);
+			}
+
+			.layout-content {
+				@apply(--layout-vertical);
+				@apply(--layout-flex);
+				overflow: auto;
+			}
+
+			.subtitle:before {
+				content: '';
+				@apply(--things-subtitle-icon);
+			}
+
+			.subtitle {
+				@apply(--things-default-padding);
+				@apply(--things-subtitle);
+				padding-left: 16px
+			}
+		</style>
+
+		<!-- top -->
+  	<div id="top">
+	    <!-- top-left-->
+  		<paper-card id="top-left" elevation="[[elevation]]">
+		    <span class="subtitle" hidden="[[hideTopLeftSubtitle]]">[[topLeftContentTitle]]</span>
+	    	<div id="topLeftContent" class="layout-content">
+	    		<content select="[top-left]"></content>
+	    	</div>
+	    </paper-card>
+
+	    <!-- top-right-->
+	    <paper-card id="top-right" elevation="[[elevation]]">
+		    <span class="subtitle" hidden="[[hideTopRightSubtitle]]">[[topRightContentTitle]]</span>
+		    <div id="topRightContent" class="layout-content">
+		    	<content select="[top-right]"></content>
+		    </div>
+	    </paper-card>
+    </div>
+
+    <!-- bottom -->
+    <paper-card id="bottom" elevation="[[elevation]]">
+    	<span class="subtitle" hidden="[[hideBottomSubtitle]]">[[bottomContentTitle]]</span>
+	  	<div id="bottom-content" class="layout-content">
+				<content select="[bottom]"></content>
+			</div>
+		</paper-card>
+	</template>
+
+	<script>
+		Polymer({
+			is: 'things-layout-dionysos',
+
+			properties: {
+				topLeftContentTitle: {
+					type: String,
+					value: 'topLeftContent'
+				},
+
+				topRightContentTitle: {
+					type: String,
+					value: 'topRightContent'
+				},
+
+				bottomContentTitle: {
+					type: String,
+					value: 'bottomContent'
+				},
+
+				arrowIcon: {
+					type: String,
+					value: 'icons:arrow-drop-down'
+				},
+
+				hideTopLeftSubtitle: {
+					type: Boolean,
+					value: false
+				},
+
+				hideTopRightSubtitle: {
+					type: Boolean,
+					value: false
+				},
+
+				hideBottomSubtitle: {
+					type: Boolean,
+					value: false
+				},
+
+				elevation: {
+					type: Number,
+					value: 0
+				}
+			},
+
+			behaviors: [
+				Things.LayoutBehavior
+			],
+
+			listeners: {
+				'sections-configured' : 'setupLayoutClass'
+			},
+
+			/**
+			* Section이 모두 추가된 후 Layout Class를 설정한다.
+			*
+			* @param {Object} e sections-configured
+			*/
+			setupLayoutClass: function(e) {
+				// TODO
+				// if(!this.sections || this.sections.length == 0) return;
+
+				// if(this.sections['topContent'])
+				// 	this.sections['topContent'].setAttribute('class', 'flex');
+
+				// if(this.sections['bottomContent'])
+				// 	this.sections['bottomContent'].setAttribute('class', 'flex');
+			}
+		});
+	</script>
+</dom-module>

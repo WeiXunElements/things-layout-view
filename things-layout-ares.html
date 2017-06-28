@@ -1,0 +1,200 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-card/paper-card.html">
+
+<link rel="import" href="./things-layout-behavior.html">
+
+<!--
+	상하 1:1분할 상단 좌우 분할 레이아웃
+-->
+
+<dom-module id="things-layout-ares">
+	<template>
+		<style>
+			:host {
+				display: inline-block;
+				@apply(--layout-vertical);
+			}
+			paper-card {
+			    background-color:transparent;
+			}
+			#top {
+				@apply(--layout-flex);
+				@apply(--layout-horizontal);
+			}
+
+			#top-left {
+				@apply(--layout-flex);
+				@apply(--layout-vertical);
+			}
+
+			#top-right {
+				@apply(--layout-flex);
+				@apply(--layout-vertical);
+			}
+
+			#bottom {
+				@apply(--layout-flex);
+				@apply(--layout-vertical);
+			}
+
+			#bottom-header {
+		    @apply(--layout-horizontal);
+		    @apply(--layout-justified);
+			}
+
+			.layout-content {
+				@apply(--layout-vertical);
+				@apply(--layout-flex);
+				overflow: auto;
+			}
+
+			.subtitle:before {
+				content: '';
+				@apply(--things-subtitle-icon);
+			}
+
+			.subtitle {
+				@apply(--things-default-padding);
+				@apply(--things-subtitle);
+				padding-left: 16px
+			}
+		</style>
+
+		<!-- top -->
+  	<iron-collapse id="top" opened>
+	    <!-- top-left-->
+  		<paper-card id="top-left" elevation="[[elevation]]">
+		    <span class="subtitle" hidden="[[hideTopLeftSubtitle]]">[[topLeftContentTitle]]</span>
+	    	<div id="topLeftContent" class="layout-content">
+	    		<content select="[top-left]"></content>
+	    	</div>
+	    </paper-card>
+
+	    <!-- top-right-->
+	    <paper-card id="top-right" elevation="[[elevation]]">
+		    <span class="subtitle" hidden="[[hideTopRightSubtitle]]">[[topRightContentTitle]]</span>
+		    <div id="topRightContent" class="layout-content">
+		    	<content select="[top-right]"></content>
+		    </div>
+	    </paper-card>
+    </iron-collapse>
+
+    <!-- bottom -->
+		<div id="bottom-header">
+			<span class="subtitle" hidden="[[hideBottomSubtitle]]">[[bottomContentTitle]]</span>
+			<paper-icon-button icon="[[arrowIcon]]" on-tap="foldBtnTap"></paper-icon-button>
+		</div>
+				
+  	<iron-collapse id="bottom-content" class="layout-content" opened>
+			<content select="[bottom]"></content>
+		</iron-collapse>
+	</template>
+
+	<script>
+		Polymer({
+			is: 'things-layout-ares',
+
+			properties: {
+				topLeftContentTitle: {
+					type: String,
+					value: 'topLeftContent'
+				},
+
+				topRightContentTitle: {
+					type: String,
+					value: 'topRightContent'
+				},
+
+				bottomContentTitle: {
+					type: String,
+					value: 'bottomContent'
+				},
+
+				arrowIcon: {
+					type: String,
+					value: 'icons:arrow-drop-down'
+				},
+
+				elevation: {
+					type: Number,
+					value: 0
+				},
+
+				hideTopLeftSubtitle: {
+					type: Boolean,
+					value: false
+				},
+
+				hideTopRightSubtitle: {
+					type: Boolean,
+					value: false
+				},
+
+				hideBottomSubtitle: {
+					type: Boolean,
+					value: false
+				}
+
+			},
+
+			behaviors: [
+				Things.LayoutBehavior
+			],
+
+			listeners: {
+				'sections-configured' : 'setupLayoutClass'
+			},
+
+			/**
+			 * fold button tap event listener
+			 *
+			 * 현재 화면의 상태를 확인하고 상태에 따라 그리드를 변경함
+			 */
+			foldBtnTap: function() {
+				var topContainer = this.$['top'];
+				var bottomContainer = this.$['bottom-content'];
+				var isTopOpen = topContainer.opened;
+				var isBottomOpen = bottomContainer.opened;
+
+				var currentStatus;
+				if(isTopOpen && isBottomOpen) {
+					currentStatus = 'half';
+				} else if (isTopOpen && !isBottomOpen) {
+					currentStatus = 'hidden';
+				} else if (!isTopOpen && isBottomOpen) {
+					currentStatus = 'full';
+				}
+
+				if(currentStatus == 'half') {
+					topContainer.show();
+					bottomContainer.hide();
+					this.arrowIcon = 'icons:arrow-drop-up';
+				} else if (currentStatus == 'hidden') {
+					topContainer.hide();
+					bottomContainer.show();
+					this.arrowIcon = 'icons:arrow-drop-down';
+				} else if (currentStatus == 'full') {
+					topContainer.show();
+					bottomContainer.show();
+					this.arrowIcon = 'icons:arrow-drop-down';
+				}
+			},
+
+			/**
+			* Section이 모두 추가된 후 Layout Class를 설정한다.
+			*
+			* @param {Object} e sections-configured
+			*/
+			setupLayoutClass: function(e) {
+				// TODO
+				// if(!this.sections || this.sections.length == 0) return;
+
+				// if(this.sections['topContent'])
+				// 	this.sections['topContent'].setAttribute('class', 'flex');
+
+				// if(this.sections['bottomContent'])
+				// 	this.sections['bottomContent'].setAttribute('class', 'flex');
+			}
+		});
+	</script>
+</dom-module>
