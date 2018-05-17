@@ -9,7 +9,7 @@
 -->
 
 <dom-module id="things-layout-zeus">
-	<template>
+    <template>
 		<style>
 			:host {
 				display: inline-block;
@@ -46,9 +46,10 @@
 			}
 
 			.subtitle {
-				@apply(--things-default-padding);
+				/* @apply(--things-default-padding); */
 				@apply(--things-subtitle);
-				padding-left: 16px
+				padding-left: 16px;
+				padding-top: 5px;
 			}
 		</style>
 
@@ -69,74 +70,74 @@
     </paper-card>
 	</template>
 
-	<script>
-		Polymer({
-			is: 'things-layout-zeus',
+    <script>
+        Polymer({
+            is: 'things-layout-zeus',
 
-			properties: {
-				/**
-				 * Title Of Top Content
-				 */
-				topContentTitle: {
-					type: String,
-					value: 'topContent'
-				},
+            properties: {
+                /**
+                 * Title Of Top Content
+                 */
+                topContentTitle: {
+                    type: String,
+                    value: 'topContent'
+                },
 
-				/**
-				 * Title Of Bottom Content
-				 */
-				bottomContentTitle: {
-					type: String,
-					value: 'bottomContent'
-				},
+                /**
+                 * Title Of Bottom Content
+                 */
+                bottomContentTitle: {
+                    type: String,
+                    value: 'bottomContent'
+                },
 
-				/**
-				 * if hide top subtitle
-				 */
-				hideTopSubtitle: {
-					type: Boolean,
-					value: false
-				},
+                /**
+                 * if hide top subtitle
+                 */
+                hideTopSubtitle: {
+                    type: Boolean,
+                    value: false
+                },
 
-				/**
-				 * if hide bottom subtitle
-				 */
-				hideBottomSubtitle: {
-					type: Boolean,
-					value: false
-				},
+                /**
+                 * if hide bottom subtitle
+                 */
+                hideBottomSubtitle: {
+                    type: Boolean,
+                    value: false
+                },
 
-				/**
-				 * paper card elevation value
-				 */
-				elevation: {
-					type: Number,
-					value: 0
-				}
-			},
+                /**
+                 * paper card elevation value
+                 */
+                elevation: {
+                    type: Number,
+                    value: 0
+                }
+            },
 
-			behaviors: [
-				Things.LayoutBehavior
-			],
+            behaviors: [
+                Things.LayoutBehavior
+            ],
 
-			listeners: {
-				'sections-configured' : 'setupLayoutClass'
-			},
+            listeners: {
+                'sections-configured': 'setupLayoutClass'
+            },
 
-			/**
-			* Section이 모두 추가된 후 Layout Class를 설정한다.
-			*
-			* @param {Object} e sections-configured
-			*/
-			setupLayoutClass: function(e) {
-				if(!this.sections || this.sections.length == 0) return;
+            /**
+             * Section이 모두 추가된 후 Layout Class를 설정한다.
+             *
+             * @param {Object} e sections-configured
+             */
+            setupLayoutClass: function(e) {
+                if (!this.sections || this.sections.length == 0) return;
 
-				if(this.sections['topContent'])
-					this.sections['topContent'].setAttribute('class', 'flex');
+                if (this.sections['topContent'])
+                    this.sections['topContent'].setAttribute('class', 'flex');
 
-				if(this.sections['bottomContent'])
-					this.sections['bottomContent'].setAttribute('class', 'flex');
-			}
-		});
-	</script>
+                if (this.sections['bottomContent'])
+                    this.sections['bottomContent'].setAttribute('class', 'flex');
+            }
+        });
+    </script>
 </dom-module>

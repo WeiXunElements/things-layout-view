@@ -9,7 +9,7 @@
 -->
 
 <dom-module id="things-layout-hermes">
-  <template>
+    <template>
     <style>
       :host {
         display: inline-block;
@@ -53,9 +53,10 @@
       }
 
       .subtitle {
-        @apply(--things-default-padding);
+        /* @apply(--things-default-padding); */
         @apply(--things-subtitle);
-        padding-left: 16px
+        padding-left: 16px;
+        padding-top: 5px;
       }
     </style>
 
@@ -87,31 +88,31 @@
     </div>
   </template>
 
-  <script>
-  Polymer({
-    is: 'things-layout-hermes',
+    <script>
+        Polymer({
+            is: 'things-layout-hermes',
 
-    behaviors: [
-      Things.LayoutBehavior
-    ],
+            behaviors: [
+                Things.LayoutBehavior
+            ],
 
-    properties: {
+            properties: {
 
-      leftTopContentTitle: {
-        type: String,
-        value: 'topLeftContent'
-      },
+                leftTopContentTitle: {
+                    type: String,
+                    value: 'topLeftContent'
+                },
 
-      leftBottomContentTitle: {
-        type: String,
-        value: 'bottomLeftContent'
-      },
+                leftBottomContentTitle: {
+                    type: String,
+                    value: 'bottomLeftContent'
+                },
 
-      rightContentTitle: {
-        type: String,
-        value: 'rightContent'
-      }
-    }
-  });
-  </script>
+                rightContentTitle: {
+                    type: String,
+                    value: 'rightContent'
+                }
+            }
+        });
+    </script>
 </dom-module>

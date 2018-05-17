@@ -9,7 +9,7 @@
 -->
 
 <dom-module id="things-layout-demeter">
-	<template>
+    <template>
 		<style>
 			:host {
 				display: inline-block;
@@ -60,10 +60,11 @@
 			}
 
 			.subtitle {
-				@apply(--things-default-padding);
+				/* @apply(--things-default-padding); */
 				@apply(--things-subtitle);
 				padding-bottom:0;
-				padding-left: 16px
+				padding-left: 16px;
+				padding-top: 5px;
 			}
 			:host::shadow things-resource-grid{
 				padding:5px 15px;
@@ -110,61 +111,61 @@
 
 	</template>
 
-	<script>
-		Polymer({
-			is: 'things-layout-demeter',
+    <script>
+        Polymer({
+            is: 'things-layout-demeter',
 
-			properties: {
+            properties: {
 
-				topLeftTitle: {
-					type: String,
-					value: 'top-left'
-				},
+                topLeftTitle: {
+                    type: String,
+                    value: 'top-left'
+                },
 
-				topRightTitle: {
-					type: String,
-					value: 'top-right'
-				},
+                topRightTitle: {
+                    type: String,
+                    value: 'top-right'
+                },
 
-				bottomLeftTitle: {
-					type: String,
-					value: 'bottom-left'
-				},
+                bottomLeftTitle: {
+                    type: String,
+                    value: 'bottom-left'
+                },
 
-				bottomRightTitle: {
-					type: String,
-					value: 'bottom-right'
-				},
+                bottomRightTitle: {
+                    type: String,
+                    value: 'bottom-right'
+                },
 
-				elevation: {
-					type: Number,
-					value: 0
-				}
-			},
+                elevation: {
+                    type: Number,
+                    value: 0
+                }
+            },
 
-			behaviors: [
-				Things.LayoutBehavior
-			],
+            behaviors: [
+                Things.LayoutBehavior
+            ],
 
-			listeners: {
-				'sections-configured' : 'setupLayoutClass'
-			},
+            listeners: {
+                'sections-configured': 'setupLayoutClass'
+            },
 
-			/**
-			* Section이 모두 추가된 후 Layout Class를 설정한다.
-			*
-			* @param {Object} e sections-configured
-			*/
-			setupLayoutClass: function(e) {
-				// TODO
-				// if(!this.sections || this.sections.length == 0) return;
+            /**
+             * Section이 모두 추가된 후 Layout Class를 설정한다.
+             *
+             * @param {Object} e sections-configured
+             */
+            setupLayoutClass: function(e) {
+                // TODO
+                // if(!this.sections || this.sections.length == 0) return;
 
-				// if(this.sections['topContent'])
-				// 	this.sections['topContent'].setAttribute('class', 'flex');
+                // if(this.sections['topContent'])
+                // 	this.sections['topContent'].setAttribute('class', 'flex');
 
-				// if(this.sections['bottomContent'])
-				// 	this.sections['bottomContent'].setAttribute('class', 'flex');
-			}
-		});
-	</script>
+                // if(this.sections['bottomContent'])
+                // 	this.sections['bottomContent'].setAttribute('class', 'flex');
+            }
+        });
+    </script>
 </dom-module>

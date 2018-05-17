@@ -9,7 +9,7 @@
 -->
 
 <dom-module id="things-layout-gaia">
-	<template>
+    <template>
 		<style>
 			:host {
 				display: inline-block;
@@ -30,9 +30,10 @@
 			}
 
 			.subtitle {
-				@apply(--things-default-padding);
+				/* @apply(--things-default-padding); */
 				@apply(--things-subtitle);
-				padding-left: 16px
+				padding-left: 16px;
+				padding-top: 5px;
 			}
 		</style>
 
@@ -42,33 +43,32 @@
 		</div>
 	</template>
 
-	<script>
-		Polymer({
-			is: 'things-layout-gaia',
+    <script>
+        Polymer({
+            is: 'things-layout-gaia',
 
-			properties: {
+            properties: {
 
-				contentTitle: {
-					type: String,
-					value: 'content'
-				}
-			},
+                contentTitle: {
+                    type: String,
+                    value: 'content'
+                }
+            },
 
-			behaviors: [
-				Things.LayoutBehavior
-			],
+            behaviors: [
+                Things.LayoutBehavior
+            ],
 
-			listeners: {
-				'sections-configured' : 'setupLayoutClass'
-			},
+            listeners: {
+                'sections-configured': 'setupLayoutClass'
+            },
 
-		/**
-			* Section이 모두 추가된 후 Layout Class를 설정한다.
-			******
-			* @param {Object} e sections-configured
-			*/
-			setupLayoutClass: function(e) {
-			}
-		});
-	</script>
+            /**
+             * Section이 모두 추가된 후 Layout Class를 설정한다.
+             ******
+             * @param {Object} e sections-configured
+             */
+            setupLayoutClass: function(e) {}
+        });
+    </script>
 </dom-module>

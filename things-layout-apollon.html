@@ -9,7 +9,7 @@
 -->
 
 <dom-module id="things-layout-apollon">
-	<template>
+    <template>
 		<style>
 			:host {
 				display: inline-block;
@@ -56,9 +56,10 @@
 			}
 
 			.subtitle {
-				@apply(--things-default-padding);
+				/* @apply(--things-default-padding); */
 				@apply(--things-subtitle);
-				padding-left: 16px
+				padding-left: 16px;
+				padding-top: 5px;
 			}
 		</style>
 
@@ -90,99 +91,99 @@
     </div>
 	</template>
 
-	<script>
-		Polymer({
-			is: 'things-layout-apollon',
+    <script>
+        Polymer({
+            is: 'things-layout-apollon',
 
-			properties: {
+            properties: {
 
-				/**
-				 * top section id for style
-				 */
-				topSectionId: {
-					type: String,
-					value: 'top'
-				},
+                /**
+                 * top section id for style
+                 */
+                topSectionId: {
+                    type: String,
+                    value: 'top'
+                },
 
-				/**
-				 * Title Of Top Content
-				 */
-				topContentTitle: {
-					type: String,
-					value: 'topContent'
-				},
+                /**
+                 * Title Of Top Content
+                 */
+                topContentTitle: {
+                    type: String,
+                    value: 'topContent'
+                },
 
 
-				bottomLeftContentTitle: {
-					type: String,
-					value: 'bottomLeftContent'
-				},
+                bottomLeftContentTitle: {
+                    type: String,
+                    value: 'bottomLeftContent'
+                },
 
-				/**
-				 * Title Of Bottom Content
-				 */
-				bottomRightContentTitle: {
-					type: String,
-					value: 'bottomRightContent'
-				},
+                /**
+                 * Title Of Bottom Content
+                 */
+                bottomRightContentTitle: {
+                    type: String,
+                    value: 'bottomRightContent'
+                },
 
-				/**
-				 * layout elevation value
-				 */
-				elevation: {
-					type: Number,
-					value: 1
-				},
+                /**
+                 * layout elevation value
+                 */
+                elevation: {
+                    type: Number,
+                    value: 1
+                },
 
-				/**
-				 * hide top subtitle
-				 */
-				hideTopSubtitle: {
-					type: Boolean,
-					value: false
-				},
+                /**
+                 * hide top subtitle
+                 */
+                hideTopSubtitle: {
+                    type: Boolean,
+                    value: false
+                },
 
-				/**
-				 * hide bottom left subtitle
-				 */
-				hideBottomLeftSubtitle: {
-					type: Boolean,
-					value: false
-				},
+                /**
+                 * hide bottom left subtitle
+                 */
+                hideBottomLeftSubtitle: {
+                    type: Boolean,
+                    value: false
+                },
 
-				/**
-				 * hide bottom right subtitle
-				 */
-				hideBottomRightSubtitle: {
-					type: Boolean,
-					value: false
-				}
+                /**
+                 * hide bottom right subtitle
+                 */
+                hideBottomRightSubtitle: {
+                    type: Boolean,
+                    value: false
+                }
 
-			},
+            },
 
-			behaviors: [
-				Things.LayoutBehavior
-			],
+            behaviors: [
+                Things.LayoutBehavior
+            ],
 
-			listeners: {
-				'sections-configured' : 'setupLayoutClass'
-			},
+            listeners: {
+                'sections-configured': 'setupLayoutClass'
+            },
 
-			/**
-			* Section이 모두 추가된 후 Layout Class를 설정한다.
-			*
-			* @param {Object} e sections-configured
-			*/
-			setupLayoutClass: function(e) {
-				// TODO
-				// if(!this.sections || this.sections.length == 0) return;
+            /**
+             * Section이 모두 추가된 후 Layout Class를 설정한다.
+             *
+             * @param {Object} e sections-configured
+             */
+            setupLayoutClass: function(e) {
+                // TODO
+                // if(!this.sections || this.sections.length == 0) return;
 
-				// if(this.sections['topContent'])
-				// 	this.sections['topContent'].setAttribute('class', 'flex');
+                // if(this.sections['topContent'])
+                // 	this.sections['topContent'].setAttribute('class', 'flex');
 
-				// if(this.sections['bottomContent'])
-				// 	this.sections['bottomContent'].setAttribute('class', 'flex');
-			}
-		});
-	</script>
+                // if(this.sections['bottomContent'])
+                // 	this.sections['bottomContent'].setAttribute('class', 'flex');
+            }
+        });
+    </script>
 </dom-module>

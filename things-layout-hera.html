@@ -9,7 +9,7 @@
 -->
 
 <dom-module id="things-layout-hera">
-  <template>
+    <template>
     <style>
       :host {
         display: inline-block;
@@ -53,9 +53,10 @@
       }
 
       .subtitle {
-        @apply(--things-default-padding);
+        /* @apply(--things-default-padding); */
         @apply(--things-subtitle);
-        padding-left: 16px
+        padding-left: 16px;
+        padding-top: 5px;
       }
     </style>
 
@@ -76,89 +77,89 @@
     </paper-card>
   </template>
 
-  <script>
-    Polymer({
-      is: 'things-layout-hera',
+    <script>
+        Polymer({
+            is: 'things-layout-hera',
 
-      behaviors: [
-        Things.LayoutBehavior
-      ],
+            behaviors: [
+                Things.LayoutBehavior
+            ],
 
-      properties: {
+            properties: {
 
-        /**
-         * 레이아웃 좌우 비율을 줄지 여부
-         */
-        ratio: {
-          type: Boolean,
-          value: false,
-          observer: '_ratioChanged'
-        },
+                /**
+                 * 레이아웃 좌우 비율을 줄지 여부
+                 */
+                ratio: {
+                    type: Boolean,
+                    value: false,
+                    observer: '_ratioChanged'
+                },
 
-        leftRatio: {
-          type: String,
-          value: 'ratio1'
-        },
+                leftRatio: {
+                    type: String,
+                    value: 'ratio1'
+                },
 
-        rightRatio: {
-          type: String,
-          value: 'ratio1'
-        },
+                rightRatio: {
+                    type: String,
+                    value: 'ratio1'
+                },
 
-        /**
-         * 좌측 컨텐트 타이틀 히든 여부
-         */
-        hideLeftSubtitle: {
-          type: Boolean,
-          value: false
-        },
+                /**
+                 * 좌측 컨텐트 타이틀 히든 여부
+                 */
+                hideLeftSubtitle: {
+                    type: Boolean,
+                    value: false
+                },
 
-        /**
-         * 우측 컨텐트 타이틀 히든 여부
-         */
-        hideRightSubtitle: {
-          type: Boolean,
-          value: false
-        },
+                /**
+                 * 우측 컨텐트 타이틀 히든 여부
+                 */
+                hideRightSubtitle: {
+                    type: Boolean,
+                    value: false
+                },
 
-        /**
-         * Title Of Left Content
-         */
-        leftContentTitle: {
-          type: String,
-          value: 'leftContent'
-        },
+                /**
+                 * Title Of Left Content
+                 */
+                leftContentTitle: {
+                    type: String,
+                    value: 'leftContent'
+                },
 
-        /**
-         * Title Of Right Content
-         */
-        rightContentTitle: {
-          type: String,
-          value: 'rightContent'
-        },
+                /**
+                 * Title Of Right Content
+                 */
+                rightContentTitle: {
+                    type: String,
+                    value: 'rightContent'
+                },
 
-        /**
-         * paper-card elevation value
-         */
-        elevation: {
-          type: Number,
-          value: 0
-        }
-      },
+                /**
+                 * paper-card elevation value
+                 */
+                elevation: {
+                    type: Number,
+                    value: 0
+                }
+            },
 
-      /**
-       * ratio가 true이면
-       * 레이아웃에 비율을 적용함
-       */
-      _ratioChanged: function(ratio) {
-        if(ratio) {
-          this.leftRatio = 'ratio2';
-          this.rightRatio = 'ratio1';
-        } else {
-          this.leftRatio = 'ratio1';
-          this.rightRatio = 'ratio1';
-        }
-      }
-    });
-  </script>
+            /**
+             * ratio가 true이면
+             * 레이아웃에 비율을 적용함
+             */
+            _ratioChanged: function(ratio) {
+                if (ratio) {
+                    this.leftRatio = 'ratio2';
+                    this.rightRatio = 'ratio1';
+                } else {
+                    this.leftRatio = 'ratio1';
+                    this.rightRatio = 'ratio1';
+                }
+            }
+        });
+    </script>
 </dom-module>

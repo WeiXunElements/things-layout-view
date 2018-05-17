@@ -15,7 +15,7 @@
 -->
 
 <dom-module id="things-layout-poseidon">
-	<template>
+    <template>
 		<style>
 			:host {
 				display: inline-block;
@@ -49,9 +49,10 @@
 			}
 
 			.subtitle {
-				@apply(--things-default-padding);
+				/* @apply(--things-default-padding); */
 				@apply(--things-subtitle);
-				padding-left: 16px
+				padding-left: 16px;
+				padding-top: 5px;
 			}
 
 		</style>
@@ -72,115 +73,127 @@
 			<template is="dom-repeat" items="{{sections}}" filter="isTabs">
 				<paper-tab id="{{item.tabId}}" on-tap="tabChanged">{{item.title}}</paper-tab>
 			</template>
-		</paper-tabs>
+    </paper-tabs>
 
-		<iron-pages id="tabPages" selected="{{currentTabIdx}}">
-			<div class="layout-content">
-				<content select="[tab-content-1]"></content>
-			</div>
-			<div class="layout-content">
-				<content select="[tab-content-2]"></content>
-			</div>
-			<div class="layout-content">
-				<content select="[tab-content-3]"></content>
-			</div>
-				<div class="layout-content">
-				<content select="[tab-content-4]"></content>
-			</div>
-			<div class="layout-content">
-				<content select="[tab-content-5]"></content>
-			</div>
-			<div class="layout-content">
-				<content select="[tab-content-6]"></content>
-			</div>
-			<div class="layout-content">
-				<content select="[tab-content-7]"></content>
-			</div>
-			<div class="layout-content">
-				<content select="[tab-content-8]"></content>
-			</div>
-			<div class="layout-content">
-				<content select="[tab-content-9]"></content>
-			</div>
-		</iron-pages>
-	</template>
+    <iron-pages id="tabPages" selected="{{currentTabIdx}}">
+        <div class="layout-content">
+            <content select="[tab-content-1]"></content>
+        </div>
+        <div class="layout-content">
+            <content select="[tab-content-2]"></content>
+        </div>
+        <div class="layout-content">
+            <content select="[tab-content-3]"></content>
+        </div>
+        <div class="layout-content">
+            <content select="[tab-content-4]"></content>
+        </div>
+        <div class="layout-content">
+            <content select="[tab-content-5]"></content>
+        </div>
+        <div class="layout-content">
+            <content select="[tab-content-6]"></content>
+        </div>
+        <div class="layout-content">
+            <content select="[tab-content-7]"></content>
+        </div>
+        <div class="layout-content">
+            <content select="[tab-content-8]"></content>
+        </div>
+        <div class="layout-content">
+            <content select="[tab-content-9]"></content>
+        </div>
+    </iron-pages>
+    </template>
 
-	<script>
-		Polymer({
-			is: 'things-layout-poseidon',
+    <script>
+        Polymer({
+            is: 'things-layout-poseidon',
 
-			properties: {
+            properties: {
 
-				/**
-				 * Top content title
-				 */
-				topContentTitle: {
-					type: String,
-					value: 'topContent'
-				},
+                /**
+                 * Top content title
+                 */
+                topContentTitle: {
+                    type: String,
+                    value: 'topContent'
+                },
 
-				/**
-				 * Sections
-				 */
-				sections: {
-					type: Array,
-					value: [ {
-						title: 'form1',
-						elementId: 'elementId1',
-						elementName: 'things-resource-form',
-						attributes: [
-							{ name: 'resource-id', value: '1' },
-							{ name : 'class', value : 'layout flex' }
-						]
-					}, {
-						title: 'form2',
-						tabId: 'tabId2',
-						isTab: true,
-						elementId: 'elementId2',
-						elementName: 'things-resource-form',
-						attributes: [
-							{ name:'resource-id', value : '2' },
-							{ name : 'class', value : 'layout flex' }
-						]
-					},{
-						title: 'form3',
-						tabId: 'tabId3',
-						isTab: true,
-						elementId: 'elementId3',
-						elementName: 'things-resource-form',
-						attributes: [
-							{ name:'resource-id', value: '3' },
-							{ name : 'class', value : 'layout flex' }
-						]
-					}, {
-						title: 'form4',
-						tabId: 'tabId4',
-						isTab: true,
-						elementId: 'elementId4',
-						elementName: 'things-resource-form',
-						attributes: [
-							{ name:'resource-id', value: '4' },
-							{ name : 'class', value : 'layout flex' }
-						]
-					} ]
-				}
-			},
+                /**
+                 * Sections
+                 */
+                sections: {
+                    type: Array,
+                    value: [{
+                        title: 'form1',
+                        elementId: 'elementId1',
+                        elementName: 'things-resource-form',
+                        attributes: [{
+                            name: 'resource-id',
+                            value: '1'
+                        }, {
+                            name: 'class',
+                            value: 'layout flex'
+                        }]
+                    }, {
+                        title: 'form2',
+                        tabId: 'tabId2',
+                        isTab: true,
+                        elementId: 'elementId2',
+                        elementName: 'things-resource-form',
+                        attributes: [{
+                            name: 'resource-id',
+                            value: '2'
+                        }, {
+                            name: 'class',
+                            value: 'layout flex'
+                        }]
+                    }, {
+                        title: 'form3',
+                        tabId: 'tabId3',
+                        isTab: true,
+                        elementId: 'elementId3',
+                        elementName: 'things-resource-form',
+                        attributes: [{
+                            name: 'resource-id',
+                            value: '3'
+                        }, {
+                            name: 'class',
+                            value: 'layout flex'
+                        }]
+                    }, {
+                        title: 'form4',
+                        tabId: 'tabId4',
+                        isTab: true,
+                        elementId: 'elementId4',
+                        elementName: 'things-resource-form',
+                        attributes: [{
+                            name: 'resource-id',
+                            value: '4'
+                        }, {
+                            name: 'class',
+                            value: 'layout flex'
+                        }]
+                    }]
+                }
+            },
 
-			behaviors: [
-				Things.LayoutBehavior,
-				Things.DetailTabViewBahavior,
-				Polymer.IronSelectableBehavior,
-				Polymer.IronResizableBehavior,
-			],
+            behaviors: [
+                Things.LayoutBehavior,
+                Things.DetailTabViewBahavior,
+                Polymer.IronSelectableBehavior,
+                Polymer.IronResizableBehavior,
+            ],
 
-			isTabs : function(item) {
-				return item.isTab || false;
-			},
+            isTabs: function(item) {
+                return item.isTab || false;
+            },
 
-			tabChanged: function(event) {
-				this.fire('things-layout-tab-changed', event);
-			}
+            tabChanged: function(event) {
+                this.fire('things-layout-tab-changed', event);
+            }
 
-		});
-	</script>
+        });
+    </script>
 </dom-module>

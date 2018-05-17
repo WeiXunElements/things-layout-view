@@ -9,7 +9,7 @@
 -->
 
 <dom-module id="things-layout-ares">
-	<template>
+    <template>
 		<style>
 			:host {
 				display: inline-block;
@@ -55,9 +55,10 @@
 			}
 
 			.subtitle {
-				@apply(--things-default-padding);
+				/* @apply(--things-default-padding); */
 				@apply(--things-subtitle);
-				padding-left: 16px
+				padding-left: 16px;
+				padding-top: 5px;
 			}
 		</style>
 
@@ -91,111 +92,111 @@
 		</iron-collapse>
 	</template>
 
-	<script>
-		Polymer({
-			is: 'things-layout-ares',
+    <script>
+        Polymer({
+            is: 'things-layout-ares',
 
-			properties: {
-				topLeftContentTitle: {
-					type: String,
-					value: 'topLeftContent'
-				},
+            properties: {
+                topLeftContentTitle: {
+                    type: String,
+                    value: 'topLeftContent'
+                },
 
-				topRightContentTitle: {
-					type: String,
-					value: 'topRightContent'
-				},
+                topRightContentTitle: {
+                    type: String,
+                    value: 'topRightContent'
+                },
 
-				bottomContentTitle: {
-					type: String,
-					value: 'bottomContent'
-				},
+                bottomContentTitle: {
+                    type: String,
+                    value: 'bottomContent'
+                },
 
-				arrowIcon: {
-					type: String,
-					value: 'icons:arrow-drop-down'
-				},
+                arrowIcon: {
+                    type: String,
+                    value: 'icons:arrow-drop-down'
+                },
 
-				elevation: {
-					type: Number,
-					value: 0
-				},
+                elevation: {
+                    type: Number,
+                    value: 0
+                },
 
-				hideTopLeftSubtitle: {
-					type: Boolean,
-					value: false
-				},
+                hideTopLeftSubtitle: {
+                    type: Boolean,
+                    value: false
+                },
 
-				hideTopRightSubtitle: {
-					type: Boolean,
-					value: false
-				},
+                hideTopRightSubtitle: {
+                    type: Boolean,
+                    value: false
+                },
 
-				hideBottomSubtitle: {
-					type: Boolean,
-					value: false
-				}
+                hideBottomSubtitle: {
+                    type: Boolean,
+                    value: false
+                }
 
-			},
+            },
 
-			behaviors: [
-				Things.LayoutBehavior
-			],
+            behaviors: [
+                Things.LayoutBehavior
+            ],
 
-			listeners: {
-				'sections-configured' : 'setupLayoutClass'
-			},
+            listeners: {
+                'sections-configured': 'setupLayoutClass'
+            },
 
-			/**
-			 * fold button tap event listener
-			 *
-			 * 현재 화면의 상태를 확인하고 상태에 따라 그리드를 변경함
-			 */
-			foldBtnTap: function() {
-				var topContainer = this.$['top'];
-				var bottomContainer = this.$['bottom-content'];
-				var isTopOpen = topContainer.opened;
-				var isBottomOpen = bottomContainer.opened;
+            /**
+             * fold button tap event listener
+             *
+             * 현재 화면의 상태를 확인하고 상태에 따라 그리드를 변경함
+             */
+            foldBtnTap: function() {
+                var topContainer = this.$['top'];
+                var bottomContainer = this.$['bottom-content'];
+                var isTopOpen = topContainer.opened;
+                var isBottomOpen = bottomContainer.opened;
 
-				var currentStatus;
-				if(isTopOpen && isBottomOpen) {
-					currentStatus = 'half';
-				} else if (isTopOpen && !isBottomOpen) {
-					currentStatus = 'hidden';
-				} else if (!isTopOpen && isBottomOpen) {
-					currentStatus = 'full';
-				}
+                var currentStatus;
+                if (isTopOpen && isBottomOpen) {
+                    currentStatus = 'half';
+                } else if (isTopOpen && !isBottomOpen) {
+                    currentStatus = 'hidden';
+                } else if (!isTopOpen && isBottomOpen) {
+                    currentStatus = 'full';
+                }
 
-				if(currentStatus == 'half') {
-					topContainer.show();
-					bottomContainer.hide();
-					this.arrowIcon = 'icons:arrow-drop-up';
-				} else if (currentStatus == 'hidden') {
-					topContainer.hide();
-					bottomContainer.show();
-					this.arrowIcon = 'icons:arrow-drop-down';
-				} else if (currentStatus == 'full') {
-					topContainer.show();
-					bottomContainer.show();
-					this.arrowIcon = 'icons:arrow-drop-down';
-				}
-			},
+                if (currentStatus == 'half') {
+                    topContainer.show();
+                    bottomContainer.hide();
+                    this.arrowIcon = 'icons:arrow-drop-up';
+                } else if (currentStatus == 'hidden') {
+                    topContainer.hide();
+                    bottomContainer.show();
+                    this.arrowIcon = 'icons:arrow-drop-down';
+                } else if (currentStatus == 'full') {
+                    topContainer.show();
+                    bottomContainer.show();
+                    this.arrowIcon = 'icons:arrow-drop-down';
+                }
+            },
 
-			/**
-			* Section이 모두 추가된 후 Layout Class를 설정한다.
-			*
-			* @param {Object} e sections-configured
-			*/
-			setupLayoutClass: function(e) {
-				// TODO
-				// if(!this.sections || this.sections.length == 0) return;
+            /**
+             * Section이 모두 추가된 후 Layout Class를 설정한다.
+             *
+             * @param {Object} e sections-configured
+             */
+            setupLayoutClass: function(e) {
+                // TODO
+                // if(!this.sections || this.sections.length == 0) return;
 
-				// if(this.sections['topContent'])
-				// 	this.sections['topContent'].setAttribute('class', 'flex');
+                // if(this.sections['topContent'])
+                // 	this.sections['topContent'].setAttribute('class', 'flex');
 
-				// if(this.sections['bottomContent'])
-				// 	this.sections['bottomContent'].setAttribute('class', 'flex');
-			}
-		});
-	</script>
+                // if(this.sections['bottomContent'])
+                // 	this.sections['bottomContent'].setAttribute('class', 'flex');
+            }
+        });
+    </script>
 </dom-module>
