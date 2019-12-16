@@ -60,41 +60,41 @@
 
 		</style>
 
-		<paper-tabs id="tab-group" selected="{{currentTabIdx}}" noink>
+		<paper-tabs id="tab-group" selected="{{currentTabIdx}}" noink scrollable$="[[scrollable]]">
 			<template is="dom-repeat" items="{{sections}}" filter="isTabs">
 				<paper-tab id="{{item.tabId}}" on-tap="tabChanged">{{item.title}}</paper-tab>
 			</template>
-    </paper-tabs>
+        </paper-tabs>
 
-    <iron-pages id="tabPages" selected="{{currentTabIdx}}">
-        <div class="layout-content">
-            <content select="[tab-content-1]"></content>
-        </div>
-        <div class="layout-content">
-            <content select="[tab-content-2]"></content>
-        </div>
-        <div class="layout-content">
-            <content select="[tab-content-3]"></content>
-        </div>
-        <div class="layout-content">
-            <content select="[tab-content-4]"></content>
-        </div>
-        <div class="layout-content">
-            <content select="[tab-content-5]"></content>
-        </div>
-        <div class="layout-content">
-            <content select="[tab-content-6]"></content>
-        </div>
-        <div class="layout-content">
-            <content select="[tab-content-7]"></content>
-        </div>
-        <div class="layout-content">
-            <content select="[tab-content-8]"></content>
-        </div>
-        <div class="layout-content">
-            <content select="[tab-content-9]"></content>
-        </div>
-    </iron-pages>
+        <iron-pages id="tabPages" selected="{{currentTabIdx}}">
+            <div class="layout-content">
+                <content select="[tab-content-1]"></content>
+            </div>
+            <div class="layout-content">
+                <content select="[tab-content-2]"></content>
+            </div>
+            <div class="layout-content">
+                <content select="[tab-content-3]"></content>
+            </div>
+            <div class="layout-content">
+                <content select="[tab-content-4]"></content>
+            </div>
+            <div class="layout-content">
+                <content select="[tab-content-5]"></content>
+            </div>
+            <div class="layout-content">
+                <content select="[tab-content-6]"></content>
+            </div>
+            <div class="layout-content">
+                <content select="[tab-content-7]"></content>
+            </div>
+            <div class="layout-content">
+                <content select="[tab-content-8]"></content>
+            </div>
+            <div class="layout-content">
+                <content select="[tab-content-9]"></content>
+            </div>
+        </iron-pages>
     </template>
 
     <script>
@@ -160,6 +160,12 @@
                             value: 'layout flex'
                         }]
                     }]
+                },
+
+                scrollable: {
+                    type: Boolean,
+                    notify: true,
+                    value: false
                 }
             },
 
