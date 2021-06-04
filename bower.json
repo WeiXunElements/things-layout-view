@@ -1,8 +1,8 @@
 {
     "name": "things-layout-view",
-    "version": "v2.0.7",
+    "version": "v2.0.8",
     "authors": [
-        "Hatio Lab. <heartyoh@hatiolab.com>"
+        "Shenzhen Weixun"
     ],
     "description": "Things Framework의 Layout view components",
     "keywords": [
@@ -11,8 +11,6 @@
         "seed"
     ],
     "main": "things-layout-view.html",
-    "license": "http://polymer.github.io/LICENSE.txt",
-    "homepage": "https://github.com/ThingsElements/seed-element/",
     "ignore": [
         "/.*",
         "/test/"
